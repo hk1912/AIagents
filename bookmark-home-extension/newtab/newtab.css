@@ -1,0 +1,366 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #0078d7;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    max-width: 500px;
+    margin: 0 20px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+}
+
+#search-button {
+    padding: 8px 12px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.settings-container button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* Settings panel */
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.settings-panel.active {
+    right: 0;
+}
+
+.settings-panel h2 {
+    margin-bottom: 20px;
+    color: #0078d7;
+}
+
+.setting-group {
+    margin-bottom: 15px;
+}
+
+.setting-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.setting-group select,
+.setting-group input[type="checkbox"] {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.setting-group input[type="checkbox"] {
+    width: auto;
+}
+
+#save-settings {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Bookmarks container */
+.bookmarks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+/* For list view */
+.bookmarks-container.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Bookmark folder styles */
+.bookmark-folder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bookmark-folder:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.folder-icon {
+    font-size: 36px;
+    color: #0078d7;
+    margin-bottom: 10px;
+}
+
+.folder-name {
+    font-size: 14px;
+    text-align: center;
+    word-break: break-word;
+    max-width: 100%;
+}
+
+/* List view styles */
+.list-view .bookmark-folder {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.list-view .folder-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    margin-bottom: 0;
+}
+
+/* Folder view styles */
+.folder-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 900;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.folder-view.active {
+    display: flex;
+}
+
+.folder-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.folder-header button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.folder-header h2 {
+    flex-grow: 1;
+    margin: 0 15px;
+    color: #0078d7;
+}
+
+.folder-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* Bookmark item styles */
+.bookmark-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bookmark-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.bookmark-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+.bookmark-title {
+    font-size: 14px;
+    text-align: center;
+    word-break: break-word;
+    max-width: 100%;
+}
+
+.bookmark-url {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    word-break: break-word;
+    max-width: 100%;
+    margin-top: 5px;
+}
+
+/* Loading spinner */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 50px 0;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 120, 215, 0.2);
+    border-radius: 50%;
+    border-top-color: #0078d7;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .bookmarks-container {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 15px;
+    }
+    
+    .folder-content {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-container {
+        margin: 15px 0;
+        max-width: 100%;
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    .settings-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+/* Icon size variations */
+.icon-size-small .folder-icon {
+    font-size: 24px;
+}
+
+.icon-size-large .folder-icon {
+    font-size: 48px;
+}
+
+/* Animations */
+.animations-enabled .bookmark-folder,
+.animations-enabled .bookmark-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animations-enabled .settings-panel {
+    transition: right 0.3s ease;
+}
+
+.animations-enabled .folder-view {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

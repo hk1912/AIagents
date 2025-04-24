@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="newtab.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bookmark Home</h1>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search bookmarks...">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="settings-container">
+                <button id="settings-button"><i class="fas fa-cog"></i></button>
+            </div>
+        </header>
+
+        <div class="settings-panel" id="settings-panel">
+            <h2>Settings</h2>
+            <div class="setting-group">
+                <label for="display-mode">Display Mode:</label>
+                <select id="display-mode">
+                    <option value="grid">Grid</option>
+                    <option value="list">List</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label for="icon-size">Icon Size:</label>
+                <select id="icon-size">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label for="show-favicons">Show Favicons:</label>
+                <input type="checkbox" id="show-favicons" checked>
+            </div>
+            <div class="setting-group">
+                <label for="animations-enabled">Enable Animations:</label>
+                <input type="checkbox" id="animations-enabled" checked>
+            </div>
+            <button id="save-settings">Save Settings</button>
+        </div>
+
+        <main>
+            <div class="bookmarks-container" id="bookmarks-container">
+                <!-- Bookmark folders will be dynamically inserted here -->
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading your bookmarks...</p>
+                </div>
+            </div>
+        </main>
+
+        <div class="folder-view" id="folder-view">
+            <div class="folder-header">
+                <button id="back-button"><i class="fas fa-arrow-left"></i></button>
+                <h2 id="folder-title">Folder Name</h2>
+                <button id="close-folder"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="folder-content" id="folder-content">
+                <!-- Folder contents will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="newtab.js"></script>
+</body>
+</html>
